@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Online admission page for ABC College">
+  <title>ABC College - Student Admission</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; line-height: 1.5; color: #222; }
+    .skip-link { position: absolute; left: -999px; }
+    .skip-link:focus { left: 10px; top: 10px; background: #ff0; padding: 6px; }
+    header { background: #1f3a5f; color: #fff; padding: 10px 20px; }
+    nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 15px; }
+    nav a { color: #fff; }
+    main { max-width: 900px; margin: auto; padding: 20px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #444; padding: 8px; text-align: left; }
+    th { background: #dbeafe; }
+    .table-wrap { overflow-x: auto; }
+    fieldset { margin-bottom: 15px; padding: 10px; }
+    label { display: inline-block; min-width: 140px; }
+    input, select, textarea { padding: 6px; margin: 4px 0; }
+    input:focus, select:focus, textarea:focus, a:focus, button:focus { outline: 3px solid #e11d48; }
+    button { background: #1f3a5f; color: #fff; border: 0; padding: 10px 20px; cursor: pointer; }
+    footer { background: #1f3a5f; color: #fff; text-align: center; padding: 10px; }
+    img, iframe { max-width: 100%; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#admission-form">Skip to admission form</a>
+
+  <header>
+    <h1>ABC College</h1>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#video">Campus Tour</a></li>
+        <li><a href="#admission-form">Apply Now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About Admissions 2026</h2>
+      <figure>
+        <img src="images/campus.jpg" alt="ABC College main building with garden" width="600">
+        <figcaption>Our campus in Delhi</figcaption>
+      </figure>
+      <p>Applications are open for the <strong>2026-27</strong> session.
+         Last date: <time datetime="2026-12-31">31 December 2026</time>.</p>
+    </section>
+
+    <section id="courses">
+      <h2>Courses and Fees</h2>
+      <div class="table-wrap">
+        <table>
+          <caption>Available programmes</caption>
+          <thead>
+            <tr><th scope="col">Course</th><th scope="col">Duration</th>
+                <th scope="col">Seats</th><th scope="col">Fee / Year</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">BCA</th><td>3 Years</td><td>60</td><td>Rs. 45,000</td></tr>
+            <tr><th scope="row">BBA</th><td>3 Years</td><td>60</td><td>Rs. 40,000</td></tr>
+            <tr><th scope="row">B.Com</th><td>3 Years</td><td>120</td><td>Rs. 30,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="video">
+      <h2>Campus Tour</h2>
+      <video width="560" controls poster="images/poster.jpg">
+        <source src="media/tour.mp4" type="video/mp4">
+        <track src="media/tour.vtt" kind="captions" srclang="en" label="English">
+        Your browser does not support video.
+      </video>
+    </section>
+
+    <section>
+      <h2 id="admission-form">Admission Form</h2>
+      <p>Fields marked <abbr title="required">*</abbr> are required.</p>
+
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Personal Details</legend>
+          <p><label for="fname">Full Name *</label>
+             <input type="text" id="fname" name="fname" required minlength="3" autocomplete="name"></p>
+          <p><label for="dob">Date of Birth *</label>
+             <input type="date" id="dob" name="dob" required></p>
+          <p>Gender *<br>
+             <input type="radio" id="gm" name="gender" value="male" required><label for="gm">Male</label>
+             <input type="radio" id="gf" name="gender" value="female"><label for="gf">Female</label>
+             <input type="radio" id="go" name="gender" value="other"><label for="go">Other</label></p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Contact Details</legend>
+          <p><label for="email">Email *</label>
+             <input type="email" id="email" name="email" required autocomplete="email"></p>
+          <p><label for="mobile">Mobile *</label>
+             <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}"
+                    title="Enter 10 digit number" required></p>
+          <p><label for="addr">Address</label><br>
+             <textarea id="addr" name="addr" rows="3" cols="40"></textarea></p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Academic Details</legend>
+          <p><label for="course">Course *</label>
+             <select id="course" name="course" required>
+               <option value="">-- Select --</option>
+               <option value="bca">BCA</option>
+               <option value="bba">BBA</option>
+               <option value="bcom">B.Com</option>
+             </select></p>
+          <p><label for="marks">12th Percentage *</label>
+             <input type="number" id="marks" name="marks" min="0" max="100" step="0.1" required></p>
+          <p><label for="doc">Upload Marksheet</label>
+             <input type="file" id="doc" name="doc" accept=".pdf,.jpg,.png"></p>
+        </fieldset>
+
+        <p><input type="checkbox" id="agree" name="agree" required>
+           <label for="agree">I confirm the above details are correct *</label></p>
+
+        <button type="submit">Submit Application</button>
+        <button type="reset">Reset</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <address>ABC College, Delhi | <a href="mailto:admission@abc.edu">admission@abc.edu</a></address>
+    <p>&copy; 2026 ABC College</p>
+  </footer>
+</body>
+</html>
